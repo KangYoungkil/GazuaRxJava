@@ -18,18 +18,11 @@ import static io.reactivex.Observable.just;
 
 public class Chapter1_2 {
 
-
     @CheckReturnValue
     @SchedulerSupport(SchedulerSupport.NONE)
-    public static Observable<Map.Entry> fromMap(Map map) {
-        ObjectHelper.requireNonNull(map, "items is null");
-        if (map.isEmpty()) {
-            return empty();
-        } else if (map.size() == 1) {
-            Set<Map.Entry> entrySet = map.entrySet();
-            return just(entrySet.stream().findFirst().get());
-        }
-        return RxJavaPlugins.onAssembly(Observable.fromIterable(map.entrySet()));
+    public static <T> Observable<T> fromMap(Map source) {
+        ObjectHelper.requireNonNull(source, "source is null");
+        return RxJavaPlugins.onAssembly(new ObservableFromIterable<T>(source.entrySet()));
     }
 
 
