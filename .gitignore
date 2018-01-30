@@ -62,6 +62,7 @@ gradle-app.setting
 hs_err_pid*
 
 out/
-src/main/resources/
-src/test/
 out/production/RxJava-Study/
+
+*.iml
+.idea
