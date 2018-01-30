@@ -66,3 +66,4 @@ out/production/RxJava-Study/
 
 *.iml
 .idea
+*.xml
